@@ -19,7 +19,7 @@ function App() {
       console.log("Data= ", data)
     }
     getData();
-  },[6])
+  },[setFetching])
 if(isFetching){
   return <div>
     Data Loading...
