@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
+import React, { useEffect, useState } from "react";
 import './App.css';
 
 function App() {
+  let data={title:"waiting for data"}
+
+  const [todo,setTodo]=useState(data)
+  useEffect(()=>{
+
+    async function getData(){
+
+      let response = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+      console.log("response= ", response)
+      const data = await response.json()
+      setTodo(data);
+      console.log("Data= ", data)
+    }
+    getData();
+  })
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        He
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      Hello fetch <br/>
+      <span>Title: {todo.title}</span>
+
     </div>
   );
 }
