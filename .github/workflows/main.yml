@@ -26,9 +26,14 @@ jobs:
         uses: actions/setup-node@v2-beta
         with:
           node-version: 12
-      - name: create react app
-        run: npm install
-      - run: npm build
+      - name: GitHub Action for Yarn
+        uses: Borales/actions-yarn@v2.3.0
+        with:
+         # Yarn command
+         cmd: install #npm install/ yarn install
+       
+      -  name: creating build
+         run: yarn build
       - name: installing surge
         run: npm install --global surge
       - run: surge ./ sajid-fetch-react.surge.sh --token ${{ secrets.MY_SURGE_TOKEN }}
