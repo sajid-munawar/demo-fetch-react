@@ -27,7 +27,8 @@ jobs:
         with:
           node-version: 12
       - name: create react app
-        run: npm create-react-app --global
+        run: npm install
+      - run: npm build
       - name: installing surge
         run: npm install --global surge
       - run: surge ./ sajid-fetch-react.surge.sh --token ${{ secrets.MY_SURGE_TOKEN }}
