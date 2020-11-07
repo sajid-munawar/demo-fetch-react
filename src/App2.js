@@ -13,7 +13,7 @@ function App() {
             setFetching(false)
         }
         getData();
-    },[3])
+    },[])
     if(isFetching){
       return (<div>
         Loading Data....
