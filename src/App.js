@@ -16,11 +16,12 @@ function App () {
   },[])
 
   return (<div>
-    <ul>
-    {repos.map((repoObj,ind)=>{
-      return <li key="ind">{repoObj.name}</li>
-    })}
-    </ul>
+     <h1>You are seeing all repositories</h1>
+      <ul>
+        {repos.map((repoObj, ind) => {
+          return (<li key={ind}>{repoObj.name}</li>)
+        })}
+      </ul>
   </div>)
 }
 export default  App;
