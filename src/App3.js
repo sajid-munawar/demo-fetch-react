@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-const pre =(e)=>{
-  e.preventDefault();
-}
+// const pre =(e)=>{
+//   e.preventDefault();
+// }
 const shuffleArray = (array) =>
     [...array].sort(() => Math.random() - 0.5)
 
 function App() {
-  let data={title:"waiting"}
+  // let data={title:"waiting"}
   const [todo,setTodo]=useState({})
   const [isFetching,setFetching]=useState(true)
   useEffect(() => {
@@ -28,7 +28,9 @@ function App() {
   return (<div>
     <br/> {todo.results[1].question}
     <br/> {todo.results[1].correct_answer}<br/>
-    {shuffleArray(todo.results[1].incorrect_answers.concat(todo.results[1].correct_answer))}
+    {shuffleArray(todo.results[1].incorrect_answers.concat(todo.results[1].correct_answer).map(function(value,ind){
+      return <ul key={ind}><li>{value}</li></ul>
+    }))}
   </div>)
 }
 export default App;
