@@ -1,13 +1,20 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react";
+const pre =(e)=>{
+  e.preventDefault();
+}
+const shuffleArray = (array) =>
+    [...array].sort(() => Math.random() - 0.5)
+
 function App() {
   let data={title:"waiting"}
-  const [todo,setTodo]=useState(data)
+  const [todo,setTodo]=useState({})
   const [isFetching,setFetching]=useState(true)
   useEffect(() => {
     async function getData() {
-      const response = await fetch('https://jsonplaceholder.typicode.com/todos/1')
-      console.log(response)
+      const response = await fetch("https://opentdb.com/api.php?amount=5&difficulty=easy&type=multiple")
       const data2=await response.json()
+      console.log(data2)
+      console.log(data2.results[1].question)
       setTodo(data2)
       setFetching(false)
     }
@@ -19,8 +26,9 @@ function App() {
     </div>)
   }
   return (<div>
-    Hello 
-    <br/> {todo.title}
+    <br/> {todo.results[1].question}
+    <br/> {todo.results[1].correct_answer}<br/>
+    {shuffleArray(todo.results[1].incorrect_answers.concat(todo.results[1].correct_answer))}
   </div>)
 }
 export default App;
