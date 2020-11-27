@@ -25,9 +25,10 @@ function App() {
       Data loading...
     </div>)
   }
+  console.log(todo.results[1].correct_answer)
   return (<div>
     <br/> {todo.results[1].question}
-    <br/> {todo.results[1].correct_answer}<br/>
+    {/* <br/> {todo.results[1].correct_answer}<br/> */}
     {shuffleArray(todo.results[1].incorrect_answers.concat(todo.results[1].correct_answer).map(function(value,ind){
       return <ul key={ind}><li>{value}</li></ul>
     }))}
